@@ -737,7 +737,8 @@ delay(1000); // wait for 1s
 ```
 
 ### output
-![DISP](https://user-images.githubusercontent.com/77522785/151706537-e7f8f979-78f2-42e1-a248-01905825e61c.jpeg)
+![IRS2](https://user-images.githubusercontent.com/77522785/151706739-0315719b-6378-4642-b6a8-d5ab6b3f6c5e.jpeg)
+
 
 
 
