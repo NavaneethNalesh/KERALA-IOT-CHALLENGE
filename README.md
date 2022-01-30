@@ -447,8 +447,7 @@ delay(500);// wait for 0.5 second
 
 ### Circuit diagram
 
-
- ![Exp10CD](content/IRS.jpeg?raw=true "Models")
+![IRS](https://user-images.githubusercontent.com/77522785/151706604-35e08093-4a34-4bc3-9118-c96db738609e.jpeg)
 
 
 ### code
@@ -738,8 +737,8 @@ delay(1000); // wait for 1s
 ```
 
 ### output
+![DISP](https://user-images.githubusercontent.com/77522785/151706537-e7f8f979-78f2-42e1-a248-01905825e61c.jpeg)
 
-![Exp12Out](content/DISP.jpeg?raw=true "Models")
 
 
 ## ASSIGNMENT 1
