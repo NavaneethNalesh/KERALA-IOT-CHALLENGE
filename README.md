@@ -1,6 +1,7 @@
 
 
 
+
 ## Contents
 
  Level 1  
@@ -61,7 +62,8 @@ delay(1000); // wait for a second
 
 ### output
 
-![Exp1Out](content/HELLO.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-Hyg7HniqPg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Experiment 2
 
 ## TRAFFIC LIGHT 
@@ -111,7 +113,7 @@ void loop()
 
 ### output
 
-![Exp2Out](content/traffic.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GzYovQfBc7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Experiment no 3
 
@@ -160,7 +162,7 @@ void loop()
 ```
 ### output
 
-![Exp3Out](content/LEDCHASE.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JjJ-DzoMAUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Experiment no 4
 
@@ -205,7 +207,7 @@ else
 
 ### output
 
-![Exp4Out](content/BUTTON.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-TLfURTfxdo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Experiment 5
 ### Buzzer
@@ -241,7 +243,7 @@ digitalWrite(buzzer, HIGH); // produce sound
 ### output
 
 
-![Exp5Out](content/BUZZER.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kAXKfj8A-nU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ### Experiment  6
@@ -294,7 +296,7 @@ for(val=0; val<255; val++)
 }
 ```
 ### output
-![Exp6Out](content/RGB.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W2-30jC2_eo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Experiment 7
 
@@ -336,7 +338,7 @@ delay(10);// wait for 0.01
 ### output
 
 
-![Exp7Out](content/ LDR1.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LAMJMfcaeW8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Experiment 8
 
@@ -356,7 +358,7 @@ delay(10);// wait for 0.01
  ![Exp8CD](content/FLAMEIM.png?raw=true "Models")
 
  ### code
- ~~~
+ ```C
  int flame=3;// select analog pin 3 for the sensor
 int Beep=12;// select digital pin 12 for the buzzer
 int val=0;// initialize variable
@@ -379,12 +381,11 @@ void loop()
     }
    delay(500); 
 }
-~~~
+```
 ### output
 
-![Exp8Out](content/FLAME.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/R1qqZ41iN6U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### output
 
 ### Experiment 9
 
@@ -404,7 +405,7 @@ void loop()
 
 ### code
 
-~~~
+```C
 int potPin = 5; // initialize analog pin 5 for LM35 temperature sensor
 void setup()
 {
@@ -422,12 +423,12 @@ Serial.println("C");// display “C” characters
 delay(500);// wait for 0.5 second
 }
 
-~~~
+```
 
 ### output
 
 
-![Exp9Out](content/TEMP.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X-Wd-wihBUg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Experiment 10
 
@@ -447,16 +448,86 @@ delay(500);// wait for 0.5 second
 ### Circuit diagram
 
 
- ![Exp10CD](content/IRS.png?raw=true "Models")
+ ![Exp10CD](content/IRS.jpeg?raw=true "Models")
 
 
 ### code
-~~~
+```C
+#include <IRremote.h>
+int RECV_PIN = 8;
+int LED1 = 2;
+int LED2 = 3;
+int LED3 = 4;
+int LED4 = 5;
+int LED5 = 6;
+int LED6 = 7;
+long on1  = 14498;
+long off1 = 14500;
+long on2 = 10407;
+long off2 = 14504;
+long on3 = 10411;
+long off3 = 14509;
+long on4 = 10414;
+long off4 = 14481;
+long on5 = 10386;
+long off5 = 0x00FF42BD;
+long on6 = 0x00FF4AB5;
+long off6 = 0x00FF52AD;
+IRrecv irrecv(RECV_PIN);
+decode_results results;
 
+void setup()
+ {
+  pinMode(RECV_PIN, INPUT);   
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+  pinMode(LED5, OUTPUT);
+  pinMode(LED6, OUTPUT);  
+  pinMode(13, OUTPUT);
+  Serial.begin(9600);
+   irrecv.enableIRIn(); // Start the receiver
+ }
+int on = 0;
+unsigned long last = millis();
+void loop() 
+{
+  if (irrecv.decode(&results)) 
+   {
+    Serial.println(results.value);
+    
+    if (results.value == on1 )
+       digitalWrite(LED1, HIGH);
+    if (results.value == off1 )
+       digitalWrite(LED1, LOW); 
+    if (results.value == on2 )
+       digitalWrite(LED2, HIGH);
+    if (results.value == off2 )
+       digitalWrite(LED2, LOW); 
+    if (results.value == on3 )
+       digitalWrite(LED3, HIGH);
+    if (results.value == off3 )
+       digitalWrite(LED3, LOW);
+    if (results.value == on4 )
+       digitalWrite(LED4, HIGH);
+    if (results.value == off4 )
+       digitalWrite(LED4, LOW); 
+    if (results.value == on5 )
+       digitalWrite(LED5, HIGH);
+    if (results.value == off5 )
+       digitalWrite(LED5, LOW); 
+    if (results.value == on6 )
+       digitalWrite(LED6, HIGH);
+    if (results.value == off6 )
+       digitalWrite(LED6, LOW);        
+    last = millis();      
+irrecv.resume(); // Receive the next value
+  }
+}
 
-
-~~~
-![Exp10Out](content/3in1.jpg?raw=true "Models")
+```
+<iframe width="560" height="315" src="https://www.youtube.com/embed/42uoPcbJz8k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -476,7 +547,7 @@ delay(500);// wait for 0.5 second
  ![Exp11CD](content/POTE.png?raw=true "Models")
 
  ### code
- ~~~ 
+ ```C
  int potpin=1;// initialize analog pin 1
 int ledpin=11;// initialize digital pin 11
 int val=0;// define val, assign initial value 0
@@ -495,11 +566,11 @@ val=analogRead(potpin);// read the analog value of analog pin 1, and assign it t
 Serial.println(val);// display val’s value
 }
 
-~~~
+```
 
 ### output
 
-![Exp11Out](content/POTEN.mp4?raw=true "Models")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SzYE8pfo7jE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ### Experiment 12
@@ -669,7 +740,249 @@ delay(1000); // wait for 1s
 ### output
 
 
-![Exp11Out](content/DISP.mp4?raw=true "Models")
+![Exp12Out](content/DISP.jpeg?raw=true "Models")
+
+
+## ASSIGNMENT 1
+
+## Automatic night lamp using LDR
+
+### components required
+
+ - Arduino uno*1
+ - LDR*1
+ - Breadboard*!
+ - jumper wires
+ - usb cable*1
+ - LED*1
+
+### Circuit diagram
+ ![ASSIGNMENT1CD](content/assign1.png?raw=true "Models")
+
+
+ ###
+
+ ```C
+
+ int ldr=A4;//Set A4(Analog Input) for LDR.
+int value=0;
+void setup() {
+Serial.begin(9600);
+pinMode(6,OUTPUT);
+}
+
+void loop() {
+value=analogRead(ldr);//Reads the Value of LDR(light).
+Serial.println("LDR value is :");//Prints the value of LDR to Serial Monitor.
+Serial.println(value);
+if(value<30)
+  {
+    digitalWrite(6,HIGH);//Makes the LED glow in Dark.
+  }
+  else
+  {
+    digitalWrite(6,LOW);//Turns the LED OFF in Light.
+  }
+}
+```
+### OUTPUT
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9YwMyS0Hs-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+## ASSIGNMENT 2
+
+## Digital dice
+
+### components required
+
+ - Arduino uno*1
+ - 7 segment diplay*1
+ - Breadboard*!
+ - jumper wires
+ - usb cable*1
+ - push button*1
+ - 330 ohm resistors*8
+ - 10k ohm resistors*1
+
+### Circuit diagram
+![ASSIGNMENT2CD](content/assign2.jpeg?raw=true "Models")
+
+### CODE
+```C
+int a=4;// set digital pin 7 for segment a
+int b=3;// set digital pin 6 for segment b
+int c=5;// set digital pin 4 for segment c
+int d=8;// set digital pin 10 for segment d
+int e=7;// set digital pin 11 for segment e
+int f=9;// set digital pin 12 for segment f
+int g=10;// set digital pin 13 for segment g
+int dp=6;// set digital pin 3 for segment dp
+int randnum = 0;
+
+void digital_0(void) // display number 0
+{
+
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(e,HIGH);
+digitalWrite(f,HIGH);
+digitalWrite(g,LOW);
+digitalWrite(dp,LOW);
+}
+void digital_1(void) // display number 1
+{
+digitalWrite(a,LOW);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d,LOW);
+digitalWrite(e,LOW);
+digitalWrite(f,LOW);
+digitalWrite(g,LOW);
+digitalWrite(dp,LOW);
+}
+
+void digital_2(void) // display number 2
+{
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,LOW);
+digitalWrite(d,HIGH);
+digitalWrite(e,HIGH);
+digitalWrite(f,LOW);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+}
+void digital_3(void) // display number 3
+{digitalWrite(g,HIGH);
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(dp,LOW);
+digitalWrite(f,LOW);
+digitalWrite(e,LOW);
+}
+void digital_4(void) // display number 4
+{digitalWrite(c,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(f,HIGH);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+digitalWrite(a,LOW);
+digitalWrite(e,LOW);
+digitalWrite(d,LOW);
+}
+void digital_5(void) // display number 5
+{
+
+digitalWrite(a,HIGH);
+digitalWrite(b, LOW);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(e, LOW);
+digitalWrite(f,HIGH);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+}
+void digital_6(void) // display number 6
+{
+digitalWrite(a,HIGH);
+digitalWrite(b,LOW);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(e,HIGH);
+digitalWrite(f,HIGH);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+}
+void digital_7(void) // display number 7
+{
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d,LOW);
+digitalWrite(e,LOW);
+digitalWrite(f,LOW);
+digitalWrite(g,LOW);
+digitalWrite(dp,LOW);
+}
+void digital_8(void) // display number 8
+{
+
+
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(e,HIGH);
+digitalWrite(f,HIGH);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+}
+void digital_9(void) // display number 9
+{
+
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d, LOW);
+digitalWrite(e, LOW);
+digitalWrite(f,HIGH);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+}
+void setup()
+{
+int i;// set variable
+for(i=4;i<=11;i++)
+pinMode(i,OUTPUT);// set pin 4-11as “output”
+pinMode(2, INPUT);
+}
+void loop()
+{
+  while(1)
+  {
+  if (digitalRead(2)== HIGH)
+  {
+    delay(100);
+    randnum = random(6);
+    
+    if (randnum == 1)
+      {digital_1();}// display number 1
+    
+
+    else if (randnum == 2)
+      {digital_2();}// display number 2
+    
+
+    else if (randnum == 3)
+      digital_3();// display number 3
+    
+
+    else if (randnum == 4)
+      digital_4();// display number 4
+    
+
+    else if (randnum == 5)
+      digital_5();// display number 5
+    
+
+    else if (randnum == 6)
+     {digital_6();}// display number 6
+    
+  }
+}
+
+}
+```
+###OUTPUT
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_tKRIL17Iv0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
 
 
 
