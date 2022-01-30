@@ -258,7 +258,7 @@ digitalWrite(buzzer, HIGH); // produce sound
  - JUMPER wire
  - Breadboard
 
- ### Circuit diagram
+### Circuit diagram
 
  
 ![Exp6CD](content/RGB1.png?raw=true "Models")
@@ -313,7 +313,7 @@ for(val=0; val<255; val++)
  - JUMPERWIRE *5
  - USB CABLE *1
 
- ### Circuit diagram
+### Circuit diagram
  
 ![Exp7CD](content/LDR.png?raw=true "Models")
 
@@ -353,7 +353,7 @@ delay(10);// wait for 0.01
  - JUMPERWIRE *6
  - usb cable*1 
 
- ### Circuit diagram
+### Circuit diagram
 
  ![Exp8CD](content/FLAMEIM.png?raw=true "Models")
 
@@ -546,7 +546,7 @@ irrecv.resume(); // Receive the next value
 ### Circuit diagram
  ![Exp11CD](content/POTE.png?raw=true "Models")
 
- ### code
+### code
  ```C
  int potpin=1;// initialize analog pin 1
 int ledpin=11;// initialize digital pin 11
@@ -739,7 +739,6 @@ delay(1000); // wait for 1s
 
 ### output
 
-
 ![Exp12Out](content/DISP.jpeg?raw=true "Models")
 
 
@@ -760,7 +759,7 @@ delay(1000); // wait for 1s
  ![ASSIGNMENT1CD](content/assign1.png?raw=true "Models")
 
 
- ###
+### CODE
 
  ```C
 
